@@ -23,11 +23,19 @@ public class Pricing {
         return DEFAULT_PRICE;
     }
 
+    static public Pricing getDefaultPriceInstance(){
+        return new Pricing("DEFAULT", getDefaultPrice());
+    }
+
     static public void setDefaultPrice(int price){
         DEFAULT_PRICE = price;
     }
 
-    class Builder {
+    public static Builder builder(){
+        return new Builder();
+    }
+
+    static class Builder {
         private String name = "";
         private int price = 0;
 

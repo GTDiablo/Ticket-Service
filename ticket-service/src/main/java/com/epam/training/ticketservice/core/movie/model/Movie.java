@@ -1,14 +1,18 @@
 package com.epam.training.ticketservice.core.movie.model;
 
+import com.epam.training.ticketservice.core.pricing.Pricing;
+
 public class Movie {
     private String name;
     private MovieCategory category;
     private int duration;
+    private Pricing pricing;
 
-    private Movie(String name, MovieCategory category, int duration){
+    private Movie(String name, MovieCategory category, int duration, Pricing pricing){
         this.name = name;
         this.category = category;
         this.duration = duration;
+        this.pricing = pricing;
     }
 
     public String getName() {
@@ -27,6 +31,7 @@ public class Movie {
         private String name = "";
         private MovieCategory category = MovieCategory.NONE;
         private int duration = 0;
+        private Pricing pricing = Pricing.getDefaultPriceInstance();
 
         public void setName(String name) {
             this.name = name;
@@ -41,7 +46,7 @@ public class Movie {
         }
 
         public Movie build(){
-            return new Movie(this.name, this.category, this.duration);
+            return new Movie(this.name, this.category, this.duration, this.pricing);
         }
     }
 }
